@@ -5,6 +5,8 @@ import { ToastController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { tap } from 'rxjs/operators';
+import * as firebase from 'firebase';
+
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -15,11 +17,12 @@ export class Tab2Page {
   constructor(private router: Router,
     private fireAuth: AngularFireAuth, public fcm: FCM,  private toastCtrl: ToastController) {
 
-            // Get FCM and listen to push notifications
-            this.getFCMandListenNotifications()
+     // Get FCM and listen to push notifications
+     this.getFCMandListenNotifications()
     }
 
     ngOnInit() {
+      
        var vm = this
       this.fireAuth.auth.onAuthStateChanged(user => {
         if (user) {
@@ -35,8 +38,9 @@ export class Tab2Page {
             emailVerified: user.emailVerified,
             refreshToken: user.refreshToken
           }
-          console.log(user.uid)
-          vm.fcm.subscribeToTopic(user.uid)
+  
+          console.log(firebase.auth().currentUser.uid)
+          vm.fcm.subscribeToTopic(firebase.auth().currentUser.uid)
           console.log(user)
         }
         else {
