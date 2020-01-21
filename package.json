@@ -27,7 +27,6 @@
     "@ionic-native/file": "^5.19.1",
     "@ionic-native/file-transfer": "^5.19.1",
     "@ionic-native/firebase": "^5.19.1",
-    "@ionic-native/firebase-x": "^5.19.1",
     "@ionic-native/geolocation": "^5.19.1",
     "@ionic-native/network": "^5.19.1",
     "@ionic-native/splash-screen": "^5.0.0",
