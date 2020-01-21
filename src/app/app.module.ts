@@ -13,9 +13,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { Facebook } from '@ionic-native/facebook/ngx';
 import { environment } from '../environments/environment';
-import {FcmProvider} from './services/fcm/fcm'
-import { FirebaseX } from "@ionic-native/firebase-x/ngx";
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import {FCM} from '@ionic-native/fcm/ngx'
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,8 +27,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     StatusBar,
     SplashScreen,
     Facebook,
-    FcmProvider,
-    FirebaseX,
+    FCM,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

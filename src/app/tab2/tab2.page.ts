@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { FcmProvider } from '../services/fcm/fcm';
+import { FCM } from '@ionic-native/fcm/ngx';
 import { tap } from 'rxjs/operators';
 @Component({
   selector: 'app-tab2',
@@ -13,13 +13,14 @@ import { tap } from 'rxjs/operators';
 export class Tab2Page {
   user: any = {}
   constructor(private router: Router,
-    private fireAuth: AngularFireAuth, public fcm: FcmProvider,  private toastCtrl: ToastController) {
+    private fireAuth: AngularFireAuth, public fcm: FCM,  private toastCtrl: ToastController) {
 
             // Get FCM and listen to push notifications
             this.getFCMandListenNotifications()
     }
 
     ngOnInit() {
+       var vm = this
       this.fireAuth.auth.onAuthStateChanged(user => {
         if (user) {
           this.user = {
@@ -34,6 +35,8 @@ export class Tab2Page {
             emailVerified: user.emailVerified,
             refreshToken: user.refreshToken
           }
+          console.log(user.uid)
+          vm.fcm.subscribeToTopic(user.uid)
           console.log(user)
         }
         else {
@@ -49,23 +52,26 @@ export class Tab2Page {
     }
 
     async getFCMandListenNotifications() {
+      var vm = this
       // Get a FCM token
       this.fcm.getToken()
       // Listen to incoming messages
-       this.fcm.listenToNotifications().pipe(
-          tap(msg => {
-            console.log(msg)
-            // const toastz =  this.toastCtrl.create({
-            //       message: msg.body,
-            //       duration: 7000,
-            //       position: 'top'
-            //   });
-            //  toastz.present();
+      this.fcm.onNotification().subscribe(data => {
+        if (data) {
+        vm.showToast(data.body)
+        }
+    
+      });
+    }
 
-
-          })
-
-
-      ).subscribe()
+  showToast(message) {
+     this.toastCtrl.create({
+      message: message,
+      duration: 7000,
+      position: 'top'
+    }).then((toastData)=>{
+      console.log(toastData);
+      toastData.present();
+    });
   }
 }
