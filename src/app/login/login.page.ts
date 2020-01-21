@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
@@ -11,15 +11,21 @@ import * as firebase from 'firebase';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  
+
   loading: any;
   introSlides: any
-
+  slideOpts: any;
   constructor(
     private router: Router,
     private fb: Facebook,
     public loadingController: LoadingController,
     private fireAuth: AngularFireAuth
   ) { 
+    this.slideOpts = {
+      effect: 'fade'
+    };
+
     this.introSlides = [
       {
         title: 'Find your match nearby',

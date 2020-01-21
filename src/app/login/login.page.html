@@ -1,6 +1,6 @@
 <ion-content class="ion-padding">
       <div layout vertical center>
-        <ion-slides #slides pager flex>
+        <ion-slides #slides pager="true" [options]="slideOpts">
           <ion-slide *ngFor="let slide of introSlides">
          
             <h3 class="font-thin" [innerHTML]="slide.title"></h3>

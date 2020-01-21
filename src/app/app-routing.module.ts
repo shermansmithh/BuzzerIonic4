@@ -9,6 +9,26 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'matched',
+    loadChildren: () => import('./matched/matched.module').then( m => m.MatchedPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'lookingfor',
+    loadChildren: () => import('./lookingfor/lookingfor.module').then( m => m.LookingforPageModule)
+  },
+  {
+    path: 'birthdayto-age',
+    loadChildren: () => import('./birthdayto-age/birthdayto-age.module').then( m => m.BirthdaytoAgePageModule)
+  },
+  {
+    path: 'chat',
+    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
   }
 ];
 @NgModule({
