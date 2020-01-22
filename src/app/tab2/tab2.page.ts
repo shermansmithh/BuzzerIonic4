@@ -25,28 +25,7 @@ export class Tab2Page {
     ngOnInit() {
       this.fcm.subscribeToTopic(firebase.auth().currentUser.uid)
 
-      //  var vm = this
-      // this.fireAuth.auth.onAuthStateChanged(user => {
-      //   if (user) {
-      //     this.user = {
-      //       uid: user.uid,
-      //       phoneNumber: user.phoneNumber,
-      //       photoURL: user.photoURL,
-      //       creationTime: user.metadata.creationTime,
-      //       lastSignInTime: user.metadata.lastSignInTime,
-      //       isAnonymous: user.isAnonymous,
-      //       email: user.email,
-      //       displayName: user.displayName,
-      //       emailVerified: user.emailVerified,
-      //       refreshToken: user.refreshToken
-      //     }
-
-      //     vm.fcm.subscribeToTopic(firebase.auth().currentUser.uid)
-      //   }
-      //   else {
-      //     this.router.navigate(["/tab3"]);
-      //   }
-      // })
+      
     }
 
     logout() {

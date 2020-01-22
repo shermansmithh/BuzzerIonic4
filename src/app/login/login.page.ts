@@ -28,7 +28,8 @@ export class LoginPage implements OnInit {
     public alertCtrl: AlertController
   ) { 
     this.slideOpts = {
-      effect: 'fade'
+      initialSlide: 1,
+      speed: 400
     };
 
     this.introSlides = [
