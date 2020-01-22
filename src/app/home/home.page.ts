@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController, ModalController, ToastController, AlertController,Platform } from '@ionic/angular';
+import { Component, OnInit,  ViewChild } from '@angular/core';
+import { NavController, ModalController, IonSlides, ToastController, AlertController,Platform } from '@ionic/angular';
 import * as firebase from 'firebase';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { HttpClient } from '@angular/common/http';
-import 'rxjs/add/operator/map';
+import { map } from 'rxjs/operators'; 
 import { FCM } from '@ionic-native/fcm/ngx';
 import { tap } from 'rxjs/operators';
 
@@ -24,6 +24,26 @@ import { Firebase } from '@ionic-native/firebase';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+  @ViewChild(IonSlides ,{static: true}) slides: IonSlides;
+  userId: string = "null"
+  fbid: String = "null"
+  accestoken: String
+  user: any
+  plususers: any
+  users: any[] = []
+  compliancearray: any[] = []
+  favusers: any[] = []
+  hidussers: any
+  isLoading: boolean = true;
+  currentSlideIndex: number = 0;
+  internet: boolean = true
+  downloaded: any = {}
+  watch: any
+  subscription: any
+  watchnetwork: any
+  appversion: any
+  ioslink:any
+  androidlink:any
 
   constructor() { }
 
