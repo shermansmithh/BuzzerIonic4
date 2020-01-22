@@ -21,37 +21,37 @@ export class Tab2Page {
      this.getFCMandListenNotifications()
     }
 
+    
     ngOnInit() {
-      
-       var vm = this
-      this.fireAuth.auth.onAuthStateChanged(user => {
-        if (user) {
-          this.user = {
-            uid: user.uid,
-            phoneNumber: user.phoneNumber,
-            photoURL: user.photoURL,
-            creationTime: user.metadata.creationTime,
-            lastSignInTime: user.metadata.lastSignInTime,
-            isAnonymous: user.isAnonymous,
-            email: user.email,
-            displayName: user.displayName,
-            emailVerified: user.emailVerified,
-            refreshToken: user.refreshToken
-          }
-  
-          console.log(firebase.auth().currentUser.uid)
-          vm.fcm.subscribeToTopic(firebase.auth().currentUser.uid)
-          console.log(user)
-        }
-        else {
-          this.router.navigate(["/tab3"]);
-        }
-      })
+      this.fcm.subscribeToTopic(firebase.auth().currentUser.uid)
+
+      //  var vm = this
+      // this.fireAuth.auth.onAuthStateChanged(user => {
+      //   if (user) {
+      //     this.user = {
+      //       uid: user.uid,
+      //       phoneNumber: user.phoneNumber,
+      //       photoURL: user.photoURL,
+      //       creationTime: user.metadata.creationTime,
+      //       lastSignInTime: user.metadata.lastSignInTime,
+      //       isAnonymous: user.isAnonymous,
+      //       email: user.email,
+      //       displayName: user.displayName,
+      //       emailVerified: user.emailVerified,
+      //       refreshToken: user.refreshToken
+      //     }
+
+      //     vm.fcm.subscribeToTopic(firebase.auth().currentUser.uid)
+      //   }
+      //   else {
+      //     this.router.navigate(["/tab3"]);
+      //   }
+      // })
     }
 
     logout() {
       this.fireAuth.auth.signOut().then(() => {
-        this.router.navigate(["/home"]);
+        this.router.navigate(["/tab1"]);
       })
     }
 
@@ -67,6 +67,7 @@ export class Tab2Page {
     
       });
     }
+
 
   showToast(message) {
      this.toastCtrl.create({

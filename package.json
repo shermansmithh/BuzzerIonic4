@@ -22,6 +22,7 @@
     "@angular/router": "~8.1.2",
     "@ionic-native/android-permissions": "^5.19.1",
     "@ionic-native/core": "^5.0.0",
+    "@ionic-native/device": "^5.19.1",
     "@ionic-native/facebook": "^5.19.1",
     "@ionic-native/fcm": "^5.19.1",
     "@ionic-native/file": "^5.19.1",

@@ -15,7 +15,7 @@ import { Facebook } from '@ionic-native/facebook/ngx';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import {FCM} from '@ionic-native/fcm/ngx'
-
+import { Device } from '@ionic-native/device/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -28,6 +28,7 @@ import {FCM} from '@ionic-native/fcm/ngx'
     SplashScreen,
     Facebook,
     FCM,
+    Device,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
